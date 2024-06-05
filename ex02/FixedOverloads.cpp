@@ -1,54 +1,48 @@
 #include "Fixed.hpp"
 
-Fixed	operator+(const Fixed &a, const Fixed &b)
+float	Fixed::operator+(const Fixed fixed) const
 {
-	Fixed result;
-
-	result.setRawBits(a.getRawBits() + b.getRawBits());
-	return result;
+	return (this->toFloat() + fixed.toFloat());
 }
 
-Fixed	operator-(const Fixed &a, const Fixed &b)
+float	Fixed::operator-(const Fixed fixed) const
 {
-	Fixed result;
-
-	result.setRawBits(a.getRawBits() - b.getRawBits());
-	return result;
+	return (this->toFloat() - fixed.toFloat());
 }
 
-float	Fixed::operator*(const Fixed &fixed) const
+float	Fixed::operator*(const Fixed fixed) const
 {
 	return (this->toFloat() * fixed.toFloat());
 }
 
-float	Fixed::operator/(const Fixed &fixed) const
+float	Fixed::operator/(const Fixed fixed) const
 {
 	return (this->toFloat() / fixed.toFloat());
 }
 
 Fixed &Fixed::min(Fixed &a, Fixed &b)
 {
-	return (a < b ? a : b);
+	return (a <= b ? a : b);
 }
 
 Fixed &Fixed::max(Fixed &a, Fixed &b)
 {
-	return (a > b ? a : b);
+	return (a >= b ? a : b);
 }
 
 const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
 {
-	return (a < b ? a : b);
+	return (a <= b ? a : b);
 }
 
 const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
 {
-	return (a > b ? a : b);
+	return (a >= b ? a : b);
 }
 
 Fixed &Fixed::operator++()
 {
-	fixedPointValue++;
+	this->fixedPointValue++;
 	return *this;
 }
 
@@ -61,7 +55,7 @@ Fixed Fixed::operator++(int)
 
 Fixed &Fixed::operator--()
 {
-	fixedPointValue--;
+	this->fixedPointValue--;
 	return *this;
 }
 
@@ -74,30 +68,29 @@ Fixed Fixed::operator--(int)
 
 bool Fixed::operator>(const Fixed &fixed) const
 {
-	return fixedPointValue > fixed.getRawBits();
+	return (this->toFloat() > fixed.toFloat());
 }
 
 bool Fixed::operator<(const Fixed &fixed) const
 {
-	return fixedPointValue < fixed.getRawBits();
+	return (this->toFloat() < fixed.toFloat());
 }
-
 bool Fixed::operator>=(const Fixed &fixed) const
 {
-	return fixedPointValue >= fixed.getRawBits();
+	return (this->toFloat() >= fixed.toFloat());
 }
 
 bool Fixed::operator<=(const Fixed &fixed) const
 {
-	return fixedPointValue <= fixed.getRawBits();
+	return (this->toFloat() <= fixed.toFloat());
 }
 
 bool Fixed::operator==(const Fixed &fixed) const
 {
-	return fixedPointValue == fixed.getRawBits();
+	return (this->toFloat() == fixed.toFloat());
 }
 
 bool Fixed::operator!=(const Fixed &fixed) const
 {
-	return fixedPointValue != fixed.getRawBits();
+	return (this->toFloat() != fixed.toFloat());
 }

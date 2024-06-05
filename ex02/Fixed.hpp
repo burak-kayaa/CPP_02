@@ -2,6 +2,7 @@
 #define FIXED_HPP
 
 #include <iostream>
+#include <cmath>
 class Fixed
 {
 	private:
@@ -19,10 +20,10 @@ class Fixed
 		int toInt(void) const;
 		// Overload operators
 		Fixed &operator=(const Fixed &fixed);
-		Fixed operator+(const Fixed &fixed) const;
-		Fixed operator-(const Fixed &fixed) const;
-		float operator*(const Fixed &fixed) const;
-		float operator/(const Fixed &fixed) const;
+		float operator+(const Fixed fixed) const;
+		float operator-(const Fixed fixed) const;
+		float operator*(const Fixed fixed) const;
+		float operator/(const Fixed fixed) const;
 		Fixed &operator++();
 		Fixed operator++(int);
 		Fixed &operator--();

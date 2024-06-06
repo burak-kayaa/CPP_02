@@ -23,6 +23,13 @@ Fixed::Fixed(const Fixed &fixed)
 	*this = fixed;
 }
 
+Fixed &Fixed::operator=(const Fixed &fixed)
+{
+	std::cout << "Assignation operator called" << std::endl;
+	fixedPointValue = fixed.getRawBits();
+	return *this;
+}
+
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
@@ -48,4 +55,10 @@ float	Fixed::toFloat(void) const
 int		Fixed::toInt(void) const
 {
 	return fixedPointValue >> fractionalBits;
+}
+
+std::ostream	&operator<<(std::ostream &o, Fixed const &fixed)
+{
+	o << fixed.toFloat();
+	return (o);
 }
